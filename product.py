@@ -5,6 +5,7 @@ from datetime import datetime
 import pandas as pd
 from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException
 from threading import Semaphore, Thread
+import CrUtil
 
 
 class ProductPage(BasePage):
@@ -157,6 +158,9 @@ class ProductPage(BasePage):
                     By.CSS_SELECTOR, '.product-short-description')
                 if (short_desc_ele):
                     short_desc = short_desc_ele.get_attribute('innerHTML')
+                    short_desc = CrUtil.simplify_image(short_desc)
+                    short_desc = CrUtil.clean_enter(short_desc)
+                    short_desc = CrUtil.clean_tab(short_desc)
             except:
                 self.writelog('Loi short_desc: ' + url)
 
@@ -167,6 +171,10 @@ class ProductPage(BasePage):
                     By.CSS_SELECTOR, '.woocommerce-Tabs-panel--description')
                 if (content_ele):
                     content = content_ele.get_attribute('innerHTML')
+                    content = CrUtil.simplify_image(content)
+                    content = CrUtil.clean_enter(content)
+                    content = CrUtil.clean_tab(content)
+
             except:
                 self.writelog('Loi content: ' + url)
 

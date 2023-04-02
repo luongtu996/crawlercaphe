@@ -4,7 +4,6 @@ import os
 import CrUtil
 from threading import Semaphore, Thread
 
-
 class MainProduct:
 
     def __init__(self):
@@ -40,7 +39,6 @@ class MainProduct:
         product_urls = self.product.get_all_product_urls(collection_urls)
         file_name_save = 'dumpfile/all_product_urls.json'
         CrUtil.save_json_data(file_name_save, product_urls)
-            
 
     def get_products(self):
         file_name = 'dumpfile/all_product_urls.json'
@@ -85,7 +83,8 @@ class MainProduct:
 
 main = MainProduct()
 # main.save_collection_urls()
+# main.save_all_collection_urls()
 # main.save_all_products_url()
-# main.save_products_url()
-# main.get_products()
-main.get_categories()
+main.get_products()
+
+# main.get_categories()

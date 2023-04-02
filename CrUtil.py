@@ -3,7 +3,7 @@
 
 import json
 import os
-import requests
+import re
 
 
 def save_json_data(file_path, datas):
@@ -44,3 +44,16 @@ def mkdir(path):
         os.makedirs(path)
         print(path)
         return
+
+def simplify_image(content): 
+    regex = r'<img[^>]*?\sdata-src\s*=\s*[\'"](.*?)[\'"][^>]*?>'
+    new_content = re.sub(regex, r'<img src="\1">', content)
+    return new_content
+
+def clean_tab(content): 
+    clean_string = content.replace('\t', '')
+    return clean_string
+
+def clean_enter(content):
+    clean_string = content.replace('\n', '')
+    return clean_string

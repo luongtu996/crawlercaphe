@@ -1,11 +1,10 @@
 from base import BasePage
 from selenium.webdriver.common.by import By
 from time import sleep
-from datetime import datetime
-import pandas as pd
 from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException
 import re
 import threading
+import CrUtil
 
 
 class BlogPage(BasePage):
@@ -71,7 +70,6 @@ class BlogPage(BasePage):
                     background_image = image_ele.value_of_css_property(
                         'background-image')
                     url_match = re.search(r'url\("(.*?)"\)', background_image)
-                    print(url_match)
                     if url_match:
                         image = url_match.group(1)
             except:
@@ -97,6 +95,9 @@ class BlogPage(BasePage):
                         "document.querySelector('.entry-content.single-page .blog-share.text-center').remove();")
                     # content = content_ele.get_attribute('outerHTML')
                     content = content_ele.get_attribute('innerHTML')
+                    content = CrUtil.simplify_image(content)
+                    content = CrUtil.clean_enter(content)
+                    content = CrUtil.clean_tab(content)
             except:
                 self.writelog('Loi content: ' + url)
 
