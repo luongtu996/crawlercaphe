@@ -1,0 +1,445 @@
+[
+    {
+        "child": [
+            "ROYAL",
+            "XLVI",
+            "ASCASO",
+            "BARISTA ATTITUDE",
+            "LA CIMBALI",
+            "NUOVA SIMONELLI",
+            "ASTORIA",
+            "LA MARZOCCO",
+            "SANREMO",
+            "BFC srl",
+            "BEZZERA",
+            "FAEMA",
+            "CASADIO",
+            "WEGA",
+            "RANCILIO",
+            "Gia đình &amp; Văn phòng"
+        ],
+        "has_child": true,
+        "name": "MÁY PHA CÀ PHÊ"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "ROYAL"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "XLVI"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "ASCASO"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "BARISTA ATTITUDE"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "LA CIMBALI"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "NUOVA SIMONELLI"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "ASTORIA"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "LA MARZOCCO"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "SANREMO"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "BFC srl"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "BEZZERA"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "FAEMA"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "CASADIO"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "WEGA"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "RANCILIO"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "Gia đình &amp; Văn phòng"
+    },
+    {
+        "child": [
+            "ASTORIA",
+            "BFC srl",
+            "CARIMALI",
+            "CASADIO",
+            "EXPOBAR",
+            "FAEMA",
+            "LA CIMBALI",
+            "LA MARZOCCO",
+            "NUOVA SIMONELLI",
+            "RANCILIO",
+            "SANREMO",
+            "WEGA",
+            "Thương hiệu khác"
+        ],
+        "has_child": true,
+        "name": "MÁY PHA CAFÉ ĐÃ QUA SỬ DỤNG"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "ASTORIA"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "BFC srl"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "CARIMALI"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "CASADIO"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "EXPOBAR"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "FAEMA"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "LA CIMBALI"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "LA MARZOCCO"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "NUOVA SIMONELLI"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "RANCILIO"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "SANREMO"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "WEGA"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "Thương hiệu khác"
+    },
+    {
+        "child": [
+            "FIORENZATO",
+            "XLVI",
+            "ASCASO",
+            "AMALFI",
+            "JIEXING",
+            "RACCEA",
+            "SIGMA",
+            "SLINGSHOT",
+            "DOSERLESS",
+            "MAZZER",
+            "MAHLKONIG",
+            "EUREKA",
+            "LA CIMBALI",
+            "Thương hiệu khác"
+        ],
+        "has_child": true,
+        "name": "MÁY XAY CÀ PHÊ"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "FIORENZATO"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "XLVI"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "ASCASO"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "AMALFI"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "JIEXING"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "RACCEA"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "SIGMA"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "SLINGSHOT"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "DOSERLESS"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "MAZZER"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "MAHLKONIG"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "EUREKA"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "LA CIMBALI"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "Thương hiệu khác"
+    },
+    {
+        "child": [
+            "FIORENZATO 2nd",
+            "MAHLKONIG 2nd",
+            "MAZZER 2nd",
+            "Thương hiệu khác"
+        ],
+        "has_child": true,
+        "name": "MÁY XAY CAFÉ ĐÃ QUA SỬ DỤNG"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "FIORENZATO 2nd"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "MAHLKONIG 2nd"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "MAZZER 2nd"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "Thương hiệu khác"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "MÁY RANG CÀ PHÊ"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "MÁY NÉN CÀ PHÊ"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "MÁY LỌC NƯỚC"
+    },
+    {
+        "child": [
+            "GUANGSHEN",
+            "HOSHIZAKI",
+            "KAISER",
+            "SNOOKER",
+            "VINER"
+        ],
+        "has_child": true,
+        "name": "MÁY LÀM ĐÁ"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "GUANGSHEN"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "HOSHIZAKI"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "KAISER"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "SNOOKER"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "VINER"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "TỦ MÁT – TỦ ĐÔNG"
+    },
+    {
+        "child": [
+            "BLENDTEC",
+            "OMNIBLEND",
+            "VITAMIX",
+            "PROMIX"
+        ],
+        "has_child": true,
+        "name": "MÁY XAY SINH TỐ<i class=\"icon-angle-down\"></i>"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "BLENDTEC"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "OMNIBLEND"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "VITAMIX"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "PROMIX"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "MÁY ÉP TRÁI CÂY"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "TỦ SẤY BÁT ĐĨA"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "CÀ PHÊ HẠT"
+    },
+    {
+        "child": [
+            "LINH KIỆN MÁY PHA CÀ PHÊ",
+            "LINH KIỆN MÁY XAY CÀ PHÊ",
+            "PHỤ KIỆN MÁY CÀ PHÊ KHÁC",
+            "PHỤ KIỆN BARISTA",
+            "PHỤ KIỆN XLVI"
+        ],
+        "has_child": true,
+        "name": "LINH KIỆN – PHỤ KIỆN"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "LINH KIỆN MÁY PHA CÀ PHÊ"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "LINH KIỆN MÁY XAY CÀ PHÊ"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "PHỤ KIỆN MÁY CÀ PHÊ KHÁC"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "PHỤ KIỆN BARISTA"
+    },
+    {
+        "child": [],
+        "has_child": false,
+        "name": "PHỤ KIỆN XLVI"
+    }
+]
