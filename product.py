@@ -175,9 +175,12 @@ class ProductPage(BasePage):
                     content = CrUtil.simplify_image(content)
                     content = CrUtil.clean_enter(content)
                     content = CrUtil.clean_tab(content)
-
+                    
             except:
                 self.write_error_log('Ko co content: ' + url)
+
+            # get content images
+            content_images = CrUtil.get_image_url_from_text(content)
 
             # get images
             images = []
@@ -233,6 +236,7 @@ class ProductPage(BasePage):
                 "title": title,
                 "short_desc": short_desc,
                 "content": content,
+                "content_images": content_images,
                 "images": images,
                 "posted_in": posted_in,
                 "tagged_as": tagged_as,

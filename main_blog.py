@@ -17,11 +17,13 @@ class MainBlog:
         self.collections = []
         self.num_collections = 0
 
+    # lấy tất cả link paginate của post
     def save_post_paginate(self):
         file_name = 'dumpfile/blog_paginate_urls.json'
         urls = self.blog.get_simple_post_paginate()
         CrUtil.save_json_data(file_name, urls)
 
+    # lưu tất cả link chi tiết bài viết
     def save_post_urls(self):
         file_name = 'dumpfile/blog_paginate_urls.json'
         paginate_urls = CrUtil.load_json_data(file_name)
@@ -29,9 +31,11 @@ class MainBlog:
         file_name_posts = 'dumpfile/blog_post_urls.json'
         CrUtil.save_json_data(file_name_posts, post_urls)
 
-    def save_posts_json(self):
+    # lưu tất bài viết
+    def save_posts(self):
         # create a semaphore with a limit of 5
-        sem = threading.Semaphore(5)
+        semaphore = threading.Semaphore(5)
+        posts = []
 
         # get from file
         file_name = 'dumpfile/blog_post_urls.json'
@@ -39,19 +43,27 @@ class MainBlog:
         if (CrUtil.check_file_exists(file_name)):
             post_urls = CrUtil.load_json_data(file_name)
 
-        # define a helper function to retrieve the details of a single blog post
-        def retrieve_post(url):
-            # acquire the semaphore
-            with sem:
-                post = self.blog.get_post_detail(url)
-                return post
+        def worker(url):
+            # acquire a permit from the semaphore
+            semaphore.acquire()
+            try:
+                result = self.blog.get_post_detail(url)
+                # append the result to the links list
+                posts.append(result)
+            finally:
+                # release the permit when done
+                semaphore.release()
 
-        # create a thread for each URL and retrieve the details of the blog post in parallel
-        with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
-            future_to_post = {executor.submit(
-                retrieve_post, url): url for url in post_urls}
-            posts = [future.result()
-                     for future in concurrent.futures.as_completed(future_to_post)]
+        # start a worker thread for each URL in the post_urls list
+        threads = []
+        for url in post_urls:
+            t = threading.Thread(target=worker, args=(url,))
+            t.start()
+            threads.append(t)
+
+        # wait for all threads to finish before returning the results
+        for t in threads:
+            t.join()
 
         # write product to file
         posts_file_name = 'dumpfile/posts.json'
@@ -61,4 +73,4 @@ class MainBlog:
 main = MainBlog()
 # main.save_post_paginate()
 # main.save_post_urls()
-main.save_posts_json()
+main.save_posts()

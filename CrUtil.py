@@ -4,6 +4,7 @@
 import json
 import os
 import re
+import cloudscraper
 
 
 def save_json_data(file_path, datas):
@@ -33,6 +34,7 @@ def load_json_data(file_path):
 def check_file_exists(file_path):
     return os.path.isfile(file_path)
 
+
 def mkdir(path):
     import os
     path = path.strip()
@@ -45,15 +47,43 @@ def mkdir(path):
         print(path)
         return
 
-def simplify_image(content): 
+
+def simplify_image(content):
     regex = r'<img[^>]*?\sdata-src\s*=\s*[\'"](.*?)[\'"][^>]*?>'
     new_content = re.sub(regex, r'<img src="\1">', content)
     return new_content
 
-def clean_tab(content): 
+
+def get_image_url_from_text(content):
+    pattern = r'<img\s+[^>]*?src="([^"]+)"'
+    return re.findall(pattern, content)
+
+
+def clean_tab(content):
     clean_string = content.replace('\t', '')
     return clean_string
+
 
 def clean_enter(content):
     clean_string = content.replace('\n', '')
     return clean_string
+
+
+def download_image(namefile, url):
+    scraper = cloudscraper.create_scraper()
+    homepage = 'http://www.nettruyenmoi.com/'
+    with open(namefile, 'wb') as handle:
+        try:
+            response = scraper.get(
+                url, headers={'referer': homepage})
+            if not response.ok:
+                pass
+
+            for block in response.iter_content(1024):
+                if not block:
+                    break
+                handle.write(block)
+            handle.close()
+
+        except Exception as e:
+            handle.close()

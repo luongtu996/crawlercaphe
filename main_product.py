@@ -42,6 +42,7 @@ class MainProduct:
 
     def save_products(self):
         file_name = 'dumpfile/all_product_urls.json'
+        product_file_name = 'dumpfile/all_products.json'
         products = []
         product_urls = []
         semaphore = Semaphore(5)  # limit the number of threads to 5
@@ -56,6 +57,9 @@ class MainProduct:
                 result = self.product.get_product_detail(url)
                 # append the result to the links list
                 products.append(result)
+
+                if(len(products) % 10 == 0):
+                    CrUtil.save_json_data(product_file_name, products)
             finally:
                 # release the permit when done
                 semaphore.release()
@@ -72,7 +76,7 @@ class MainProduct:
             t.join()
        
         # write product to file
-        product_file_name = 'dumpfile/all_products.json'
+        
         CrUtil.save_json_data(product_file_name, products)
         print('get_products success')
 
@@ -90,7 +94,7 @@ main = MainProduct()
 # main.save_collection_urls()
 # main.save_all_collection_urls()
 # main.save_all_products_url()
-# main.get_products()
+main.save_products()
 
 # main.save_categories()
-main.save_product_tags()
+# main.save_product_tags()

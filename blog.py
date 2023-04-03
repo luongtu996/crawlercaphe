@@ -73,7 +73,7 @@ class BlogPage(BasePage):
                     if url_match:
                         image = url_match.group(1)
             except:
-                self.writelog('Loi image: ' + url)
+                self.write_error_log('Loi image: ' + url)
 
             # get title
             title = ''
@@ -83,7 +83,7 @@ class BlogPage(BasePage):
                 if (title_ele):
                     title = title_ele.get_attribute('innerHTML')
             except:
-                self.writelog('Loi title: ' + url)
+                self.write_error_log('Loi title: ' + url)
 
             # get content
             content = ''
@@ -99,7 +99,7 @@ class BlogPage(BasePage):
                     content = CrUtil.clean_enter(content)
                     content = CrUtil.clean_tab(content)
             except:
-                self.writelog('Loi content: ' + url)
+                self.write_error_log('Loi content: ' + url)
 
             # get posted_in
             posted_in = []
@@ -108,7 +108,7 @@ class BlogPage(BasePage):
                     By.CSS_SELECTOR, '.entry-meta [href]')
                 posted_in = [elem.text for elem in posted_in_ele]
             except:
-                self.writelog('Loi posted_in: ' + url)
+                self.write_error_log('Loi posted_in: ' + url)
 
             item_info = {
                 "title": title,
@@ -119,7 +119,7 @@ class BlogPage(BasePage):
 
             return item_info
         except Exception as e:
-            self.writelog('Loi: ' + url)
+            self.write_error_log('Loi: ' + url)
             print(e)
             return {}
 
