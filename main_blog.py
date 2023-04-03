@@ -33,12 +33,14 @@ class MainBlog:
 
     # lưu tất bài viết
     def save_posts(self):
+        posts_file_name = 'dumpfile/posts.json'
         # create a semaphore with a limit of 5
         semaphore = threading.Semaphore(5)
         posts = []
 
         # get from file
         file_name = 'dumpfile/blog_post_urls.json'
+
         post_urls = []
         if (CrUtil.check_file_exists(file_name)):
             post_urls = CrUtil.load_json_data(file_name)
@@ -50,6 +52,10 @@ class MainBlog:
                 result = self.blog.get_post_detail(url)
                 # append the result to the links list
                 posts.append(result)
+                # check if we have processed 10 posts
+                if len(posts) % 10 == 0:
+                    # write the post to file
+                    CrUtil.save_json_data(posts_file_name, posts)
             finally:
                 # release the permit when done
                 semaphore.release()
@@ -65,8 +71,7 @@ class MainBlog:
         for t in threads:
             t.join()
 
-        # write product to file
-        posts_file_name = 'dumpfile/posts.json'
+        # write post to file
         CrUtil.save_json_data(posts_file_name, posts)
 
 
