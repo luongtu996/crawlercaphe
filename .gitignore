@@ -3,3 +3,4 @@
 /.vscode
 /error_log.txt
 /logs
+.DS_Store
