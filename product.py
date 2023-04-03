@@ -124,13 +124,14 @@ class ProductPage(BasePage):
                 By.CSS_SELECTOR, "#main div.product-small.box .woocommerce-loop-product__title [href]")
             links = [elem.get_attribute('href') for elem in elems]
         except:
-            self.writelog('khong co sp nao trong collecion: ' + url)
+            self.write_error_log('khong co sp nao trong collecion: ' + url)
 
         return links
 
     def get_product_detail(self, url):
         temp_driver = self.temp_drive()
         temp_driver.get(url)
+        self.write_info_log('get product:' + url)
         try:
             # get breadcum
             breadcum = ''
@@ -139,7 +140,7 @@ class ProductPage(BasePage):
                     By.CSS_SELECTOR, '.woocommerce-breadcrumb.breadcrumbs [href]:not(:first-child)')
                 breadcum = [elem.text for elem in breadcum_ele]
             except:
-                self.writelog('Loi breadcum: ' + url)
+                self.write_error_log('Loi breadcum: ' + url)
 
             # get title
             title = ''
@@ -149,7 +150,7 @@ class ProductPage(BasePage):
                 if (title_ele):
                     title = title_ele.get_attribute('innerHTML')
             except:
-                self.writelog('Loi title: ' + url)
+                self.write_error_log('Loi title: ' + url)
 
             # get short desc
             short_desc = ''
@@ -162,7 +163,7 @@ class ProductPage(BasePage):
                     short_desc = CrUtil.clean_enter(short_desc)
                     short_desc = CrUtil.clean_tab(short_desc)
             except:
-                self.writelog('Loi short_desc: ' + url)
+                self.write_error_log('Ko co short_desc: ' + url)
 
             # get content
             content = ''
@@ -176,7 +177,7 @@ class ProductPage(BasePage):
                     content = CrUtil.clean_tab(content)
 
             except:
-                self.writelog('Loi content: ' + url)
+                self.write_error_log('Ko co content: ' + url)
 
             # get images
             images = []
@@ -187,7 +188,7 @@ class ProductPage(BasePage):
                     images = [elem.get_attribute('href')
                               for elem in images_ele]
             except:
-                self.writelog('Loi images: ' + url)
+                self.write_error_log('Loi images: ' + url)
 
             # get posted_in
             posted_in = []
@@ -196,7 +197,7 @@ class ProductPage(BasePage):
                     By.CSS_SELECTOR, '.product_meta .posted_in [href]')
                 posted_in = [elem.text for elem in posted_in_ele]
             except:
-                self.writelog('Loi posted_in: ' + url)
+                self.write_error_log('Loi posted_in: ' + url)
 
             # get tagged_as
             tagged_as = []
@@ -205,7 +206,7 @@ class ProductPage(BasePage):
                     By.CSS_SELECTOR, '.product_meta .tagged_as [href]')
                 tagged_as = [elem.text for elem in tagged_as_ele]
             except:
-                self.writelog('Loi tagged_as: ' + url)
+                self.write_error_log('Loi tagged_as: ' + url)
 
             # get prices
             has_price = True
@@ -224,7 +225,7 @@ class ProductPage(BasePage):
                     sale_price = price_list[1]
             except Exception as e:
                 has_price = False
-                self.writelog('Loi price: ' + url)
+                self.write_error_log('Loi price: ' + url)
                 print(e)
 
             item_info = {
@@ -242,7 +243,7 @@ class ProductPage(BasePage):
 
             return item_info
         except Exception as e:
-            self.writelog('Loi: ' + url)
+            self.write_error_log('Loi: ' + url)
             print(e)
             return {}
 
@@ -268,13 +269,21 @@ class ProductPage(BasePage):
             if ('menu-item-has-children' in el.get_attribute('class')):
                 sub_menu_el = el.find_elements(
                     By.CSS_SELECTOR, ".sub-menu .menu-item-object-product_cat [href]")
-                sub_menu = [elem.get_attribute('innerHTML') for elem in sub_menu_el]
+                sub_menu = [elem.get_attribute('innerHTML')
+                            for elem in sub_menu_el]
                 cate['has_child'] = True
                 cate['child'] = sub_menu
-            
+
             cates.append(cate)
 
         return cates
 
-            
-                
+    def get_product_tags(self):
+        temp_driver = self.temp_drive()
+        temp_driver.get(self.home_page)
+
+        elems = temp_driver.find_elements(
+            By.CSS_SELECTOR, ".tagcloud > a[href]")
+        tags = [elem.get_attribute('innerHTML') for elem in elems]
+
+        return tags

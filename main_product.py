@@ -40,7 +40,7 @@ class MainProduct:
         file_name_save = 'dumpfile/all_product_urls.json'
         CrUtil.save_json_data(file_name_save, product_urls)
 
-    def get_products(self):
+    def save_products(self):
         file_name = 'dumpfile/all_product_urls.json'
         products = []
         product_urls = []
@@ -76,15 +76,21 @@ class MainProduct:
         CrUtil.save_json_data(product_file_name, products)
         print('get_products success')
 
-    def get_categories(self):
+    def save_categories(self):
         file_name = 'dumpfile/all_categories.json'
         categories = self.product.get_categories()
         CrUtil.save_json_data(file_name, categories)
+
+    def save_product_tags(self):
+       file_name = 'dumpfile/all_product_tags.json'
+       tags = self.product.get_product_tags()
+       CrUtil.save_json_data(file_name, tags)
 
 main = MainProduct()
 # main.save_collection_urls()
 # main.save_all_collection_urls()
 # main.save_all_products_url()
-main.get_products()
+# main.get_products()
 
-# main.get_categories()
+# main.save_categories()
+main.save_product_tags()
