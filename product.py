@@ -175,7 +175,7 @@ class ProductPage(BasePage):
                     content = CrUtil.simplify_image(content)
                     content = CrUtil.clean_enter(content)
                     content = CrUtil.clean_tab(content)
-                    
+
             except:
                 self.write_error_log('Ko co content: ' + url)
 
@@ -253,16 +253,17 @@ class ProductPage(BasePage):
 
     def get_categories(self):
         temp_driver = self.temp_drive()
-        temp_driver.get(self.home_page)
+        temp_driver.get(self.collection_page)
 
         cates = []
 
         elems = temp_driver.find_elements(
-            By.CSS_SELECTOR, "#menu-danh-muc-san-pham .menu-item-object-product_cat")
+            By.CSS_SELECTOR, ".widget_product_categories .product-categories > .cat-item")
         for el in elems:
             # get menu
             cate_ele = el.find_element(By.CSS_SELECTOR, 'a[href]')
             cate_name = cate_ele.get_attribute('innerHTML')
+            cate_name = CrUtil.clean_icon(cate_name)
             cate = {
                 "name": cate_name,
                 "has_child": False,
@@ -270,9 +271,9 @@ class ProductPage(BasePage):
             }
 
             # check if has sub_menu
-            if ('menu-item-has-children' in el.get_attribute('class')):
+            if ('has-child' in el.get_attribute('class')):
                 sub_menu_el = el.find_elements(
-                    By.CSS_SELECTOR, ".sub-menu .menu-item-object-product_cat [href]")
+                    By.CSS_SELECTOR, ".children .cat-item [href]")
                 sub_menu = [elem.get_attribute('innerHTML')
                             for elem in sub_menu_el]
                 cate['has_child'] = True
@@ -291,3 +292,17 @@ class ProductPage(BasePage):
         tags = [elem.get_attribute('innerHTML') for elem in elems]
 
         return tags
+    
+    def get_brands_image(self):
+        temp_driver = self.temp_drive()
+        temp_driver.get(self.home_page)
+        images = []
+        try:
+            elems = temp_driver.find_elements(
+                By.CSS_SELECTOR, ".slider.slider-nav-reveal.slider-nav-normal a[href] .img-inner img")
+            images = [elem.get_attribute('data-src') for elem in elems]
+        except: 
+            self.write_error_log('Error get brands')
+        return images
+
+    

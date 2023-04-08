@@ -69,6 +69,11 @@ def clean_enter(content):
     return clean_string
 
 
+def clean_icon(content):
+    clean_string = re.sub(r'<.*?>', '', content)
+    return clean_string
+    
+
 def download_image(namefile, url):
     scraper = cloudscraper.create_scraper()
     homepage = 'http://www.nettruyenmoi.com/'
@@ -87,3 +92,17 @@ def download_image(namefile, url):
 
         except Exception as e:
             handle.close()
+
+
+def get_unique_posted_in(arr):
+    merged_list = []
+    [merged_list.extend(obj["posted_in"]) for obj in arr]
+    unique_list = list(set(merged_list))
+    return unique_list
+
+
+def get_unique_tagged_as(arr):
+    merged_list = []
+    [merged_list.extend(obj["tagged_as"]) for obj in arr]
+    unique_list = list(set(merged_list))
+    return unique_list

@@ -74,8 +74,17 @@ class MainBlog:
         # write post to file
         CrUtil.save_json_data(posts_file_name, posts)
 
+    def save_posts_tags(self): 
+        file_name = 'dumpfile/posts.json'
+        file_name_save = 'dumpfile/all_posts_tags.json'
+        posts = CrUtil.load_json_data(file_name)
+        posts_tags = CrUtil.get_unique_posted_in(posts)
+        CrUtil.save_json_data(file_name_save, posts_tags)
+
+
 
 main = MainBlog()
 # main.save_post_paginate()
 # main.save_post_urls()
-main.save_posts()
+# main.save_posts()
+main.save_posts_tags()
